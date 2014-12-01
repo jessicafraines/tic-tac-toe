@@ -1,0 +1,24 @@
+{
+  "name": "Tic-Tac-Toe",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jessicafraines/tic-tac-toe",
+  "authors": [
+    "jessicafraines <jessicafraines@gmail.com>"
+  ],
+  "description": "A tic tac toe game",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mocha": "~2.0.1",
+    "chai": "~1.10.0",
+    "normalize-scss": "~3.0.2"
+  }
+}
