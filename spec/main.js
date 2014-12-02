@@ -13,17 +13,21 @@ var player = {
 var game = {
   turn: true
 }
-
 function changePlayer(){
-  if (game.turn === true) {
+  if (player.player1.turn === true) {
     player.player1.turn = false;
     player.player2.turn = true;
-  } else {
-    return player2;
-    game.turn = true;
+  } else if (player.player2.turn === true) {
+    player.player2.turn = false;
+    player.player1.turn = true;
   }
 }
 
-function makeMove(){
+$("td").click(function(){
+  $(this).addClass("selected");
+
+});
+
+
   changePlayer();
-}
+
