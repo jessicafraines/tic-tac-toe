@@ -1,0 +1,31 @@
+#board {
+  background-color: grey;
+  height: 450px;
+  width: 450px;
+}
+#board td {
+  /*border: solid 1px black;*/
+  height: 150px;
+  width: 150px;
+}
+.top {
+  border-bottom: 1px solid black;
+}
+.bottom {
+  border-top: solid 1px black;
+}
+.left {
+  border-right: solid 1px black;
+}
+.right {
+  border-left: solid 1px black;
+}
+#messageInput {
+  height: 20px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+#nameInput {
+  height: 20px;
+  margin-bottom: 20px;
+}

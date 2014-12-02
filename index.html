@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  </head>
+  <body>
+    <h2>Tic Tac Toe</h2>
+    <div id="messages">
+      <input type="text" id="nameInput" placeholder="Name">
+      <input type="text" id="messageInput" placeholder="Message">
+    </div>
+    <script>
+      var fb = new Firebase('https://tic-tac-toe-jr.firebaseio.com/');
+      $('#messageInput').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var name = $('#nameInput').val();
+          var text = $('#messageInput').val();
+          myDataRef.push({name: name, text: text});
+          $('#messageInput').val('');
+        }
+      });
+      fb.on('child_added', function(snapshot) {
+        var message = snapshot.val();
+        displayChatMessage(message.name, message.text);
+      });
+      function displayChatMessage(name, text) {
+        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+        };
+
+      <table id="board">
+        <tr>
+          <td class="top left"></td>
+          <td class="top center"></td>
+          <td class="top right"></td>
+        </tr>
+        <tr>
+          <td class="left"></td>
+          <td class="center"></td>
+          <td class="right"></td>
+        </tr>
+        <tr>
+          <td class="bottom left"></td>
+          <td class="bottom center"></td>
+          <td class="bottom right"></td>
+        </tr>
+      </table>
+    </div>
+    <div id="begin-game">
+      <input type="button" value="Player 1 Join">
+      <input type="button" value="Player 2 Join">
+    </div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="spec/main.js"></script>
+  </body>
+</html>
