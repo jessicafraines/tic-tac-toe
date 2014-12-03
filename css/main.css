@@ -1,12 +1,23 @@
+@import url(http://fonts.googleapis.com/css?family=Monofett);
+
+h2{
+ font-family: 'Monofett', cursive;
+ font-size: 100px;
+ text-align: center;
+ margin: 20px;
+}
+
 #board {
   background-color: #CD5C5C;
   height: 450px;
   width: 450px;
+  margin: auto;
 }
 #board td {
   /*border: solid 1px black;*/
   height: 150px;
   width: 150px;
+  text-align: center;
 }
 .top {
   border-bottom: 1px solid black;
@@ -34,6 +45,18 @@
   border: 1px solid black;
   width: 400px;
   padding: 10px;
+  background-color: #c0c0c0;
+  margin: auto;
   margin-bottom: 20px;
-  background-color: #c0c0c0
+}
+.selected {
+  background-color: yellow;
+}
+.x:before {
+  content: "X";
+  font-size: 100px;
+}
+.o:before {
+  content: "O";
+  font-size: 100px;
 }

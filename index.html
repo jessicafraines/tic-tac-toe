@@ -5,7 +5,7 @@
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="css/main.css">
     <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js'></script>
   </head>
   <body>
     <h2>Tic Tac Toe</h2>
@@ -32,11 +32,10 @@
         </tr>
       </table>
     </div>
-    <div id="begin-game">
-      <input type="button" value="Player 1 Join">
-      <input type="button" value="Player 2 Join">
+      <input type="button" value="Player 1 Join" id="player1">
+      <input type="button" value="Player 2 Join" id="player2">
+      <input type="button" value="Reset Game" id="reset">
     </div>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="spec/main.js"></script>
     <script src="js/firebase.js"></script>
   </body>

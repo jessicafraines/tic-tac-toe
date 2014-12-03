@@ -14,8 +14,8 @@
     });
     describe("After player 1 moves, player 1 turn should equal false", function(){
       it("should set player 1 turn to false", function(){
-        player.player1.turn = true;
-        assert.equal(makeMove(), false)
+        game.turn = true;
+        assert.equal(changePlayer(), false)
       });
     });
 

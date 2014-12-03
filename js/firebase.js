@@ -1,6 +1,6 @@
+
 ;(function(){
   'use strict';
-
   var fb = new Firebase('https://tic-tac-toe-jr.firebaseio.com/');
     $('#messageInput').keypress(function (e) {
       if (e.keyCode == 13) {
@@ -18,11 +18,6 @@
       $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messages'));
       $('#messages')[0].scrollTop = $('#messages')[0].scrollHeight;
       };
-
-})();
-
-;(function(){
-  'use strict';
   function go() {
   var userId = prompt('Username?', 'Guest');
   var gameRef = new Firebase(GAME_LOCATION);
@@ -37,7 +32,7 @@
 
   var PLAYER_DATA_LOCATION = 'player_data';
 
-  var PLAYER_TURN_LOCATION = 'player_turn';
+  //var PLAYER_TURN_LOCATION = 'player_turn';
 
 function playGame(myPlayerNumber, userId, justJoinedGame, gameRef) {
   var playerDataRef = gameRef.child(PLAYER_DATA_LOCATION).child(myPlayerNumber);
@@ -85,4 +80,6 @@ function assignPlayerNumberAndPlayGame(userId, gameRef) {
     }
   });
 }
+go();
 })();
+

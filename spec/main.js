@@ -14,20 +14,28 @@ var game = {
   turn: true
 }
 function changePlayer(){
-  if (player.player1.turn === true) {
-    player.player1.turn = false;
-    player.player2.turn = true;
-  } else if (player.player2.turn === true) {
-    player.player2.turn = false;
-    player.player1.turn = true;
+  if (game.turn === true) {
+    return game.turn = false;
+    //player.player2.turn = true;
+  } else if (game.turn === false) {
+    //player.player2.turn = false;
+    return game.turn = true;
   }
 }
 
 $("td").click(function(){
-  $(this).addClass("selected");
+  if (game.turn === true && !$(this).hasClass('o') && !$(this).hasClass('x')) {
+    console.log(game.turn);
+  $(this).addClass('x');
+  console.log("NOW", game.turn);
+  } else if (game.turn === false && !$(this).hasClass('o') && !$(this).hasClass('x')) {
+  $(this).addClass('o');
+  console.log("NOWFALSE", game.turn);
+  }
+  changePlayer();
 
 });
 
 
-  changePlayer();
+
 
