@@ -1,6 +1,7 @@
 
 ;(function(){
   'use strict';
+/*Chat starts here*/
   var fb = new Firebase('https://tic-tac-toe-jr.firebaseio.com/');
     $('#messageInput').keypress(function (e) {
       if (e.keyCode == 13) {
@@ -18,25 +19,27 @@
       $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messages'));
       $('#messages')[0].scrollTop = $('#messages')[0].scrollHeight;
       };
+
+/*Player login starts here*/
   function go() {
   var userId = prompt('Username?', 'Guest');
-  var gameRef = new Firebase(GAME_LOCATION);
-  assignPlayerNumberAndPlayGame(userId, gameRef);
+  //var gameRef = new Firebase(GAME_LOCATION);
+  assignPlayerNumberAndPlayGame(userId, fb);
 };
 
   var NUM_PLAYERS = 2;
 
-  var GAME_LOCATION = 'https://tic-tac-toe-jr.firebaseio.com/';
+  //var GAME_LOCATION = 'https://tic-tac-toe-jr.firebaseio.com/';
 
   var PLAYERS_LOCATION = 'player_list';
 
   var PLAYER_DATA_LOCATION = 'player_data';
 
-  //var PLAYER_TURN_LOCATION = 'player_turn';
+  var PLAYER_TURN_LOCATION = 'player_turn';
 
-function playGame(myPlayerNumber, userId, justJoinedGame, gameRef) {
-  var playerDataRef = gameRef.child(PLAYER_DATA_LOCATION).child(myPlayerNumber);
-  var turnCounterLocation = gameRef.child(PLAYER_TURN_LOCATION);
+function playGame(myPlayerNumber, userId, justJoinedGame, fb) {
+  var playerDataRef = fb.child(PLAYER_DATA_LOCATION).child(myPlayerNumber);
+  var turnCounterLocation = fb.child(PLAYER_TURN_LOCATION);
   alert('You are player number ' + myPlayerNumber + 
       '.  Your data will be located at ' + playerDataRef.toString());
 
@@ -47,8 +50,8 @@ function playGame(myPlayerNumber, userId, justJoinedGame, gameRef) {
 }
 
 // Use transaction() to assign a player number, then call playGame().
-function assignPlayerNumberAndPlayGame(userId, gameRef) {
-  var playerListRef = gameRef.child(PLAYERS_LOCATION);
+function assignPlayerNumberAndPlayGame(userId, fb) {
+  var playerListRef = fb.child(PLAYERS_LOCATION);
   var myPlayerNumber, alreadyInGame = false;
 
   playerListRef.transaction(function(playerList) {
@@ -74,7 +77,7 @@ function assignPlayerNumberAndPlayGame(userId, gameRef) {
     myPlayerNumber = null;
   }, function (error, committed) {
     if (committed || alreadyInGame) {
-      playGame(myPlayerNumber, userId, !alreadyInGame, gameRef);
+      playGame(myPlayerNumber, userId, !alreadyInGame, fb);
     } else {
       alert('Game is full.  Can\'t join. :-(');
     }
